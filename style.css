@@ -22,14 +22,16 @@ body {
 
 .buttons {
     display: flex;
+    align-items: center;
 }
 
 h1 {
     text-align: center;
 }
 
-button {
+button, input {
     width: 50px;
     margin: 1rem;
     padding: 5px;
 }
+

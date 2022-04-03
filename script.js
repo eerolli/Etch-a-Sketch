@@ -1,6 +1,8 @@
 let clear = document.querySelector("#clear");
 let container = document.querySelector(".container");
 let resize = document.querySelector("#resize");
+let colorPicker = document.querySelector("#colorpicker");
+let color = "#ffffff"
 
 //function to set a new size for the grid
 function resetSize(){
@@ -14,6 +16,15 @@ function resetSize(){
 resize.addEventListener('click', ()=>{
     resetSize()
 });
+
+
+//function to change color of drawing line
+function changeColor(newColor){
+    color = newColor;
+}
+
+//change the color of the line when the color picker is used
+colorPicker.onchange = (e) => changeColor(e.target.value)
 
 
 //function to create a 16x16 grid
@@ -31,7 +42,7 @@ function createGrid(size){
 
         //change background color of a square on hover
         square.addEventListener('mouseover', e=>{
-            square.style.backgroundColor = "white";
+            square.style.backgroundColor = color;
         })
 
 
