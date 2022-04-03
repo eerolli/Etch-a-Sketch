@@ -1,21 +1,25 @@
-let clear = document.querySelector("button");
+let clear = document.querySelector("#clear");
+let container = document.querySelector(".container");
+let resize = document.querySelector("#resize");
+
+//function to set a new size for the grid
+function resetSize(){
+    let number = prompt("What size would you like the grid to be? (1-100)");
+    container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
+    createGrid(number);
+}
+
+//run resetSize() on click of button
+resize.addEventListener('click', ()=>{
+    resetSize()
+});
+
 
 //function to create a 16x16 grid
 function createGrid(size){
-    //function to change the size of the grid
-    function resetSize(){
-        clear.addEventListener('click', ()=>{
-            let number = prompt("What size would you like the grid to be? (1-100)");
-            container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
-            container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
-            createGrid(number);
-        })
-        
-        
-    }
-    resetSize();
 
-    let container = document.querySelector(".container");
+
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     
@@ -34,6 +38,9 @@ function createGrid(size){
         //function to reset the grid
         function clearGrid(){
             clear.addEventListener('click', e=>{
+                square.style.backgroundColor = "black"
+           })
+           resize.addEventListener('click', ()=>{
                 square.style.backgroundColor = "black"
            })
         }
