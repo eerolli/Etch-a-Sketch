@@ -18,6 +18,7 @@ resize.addEventListener('click', ()=>{
     changeSize()
 });
 
+//resets the sketchpad back to default settings
 reset.addEventListener('click', ()=>{
     location.reload();
 })
