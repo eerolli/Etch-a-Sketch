@@ -3,9 +3,10 @@ let container = document.querySelector(".container");
 let resize = document.querySelector("#resize");
 let colorPicker = document.querySelector("#colorpicker");
 let color = "#ffffff"
+let reset = document.querySelector("#reset");
 
 //function to set a new size for the grid
-function resetSize(){
+function changeSize(){
     let number = prompt("What size would you like the grid to be? (1-100)");
     container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
@@ -14,8 +15,12 @@ function resetSize(){
 
 //run resetSize() on click of button
 resize.addEventListener('click', ()=>{
-    resetSize()
+    changeSize()
 });
+
+reset.addEventListener('click', ()=>{
+    location.reload();
+})
 
 
 //function to change color of drawing line
