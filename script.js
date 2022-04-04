@@ -2,8 +2,10 @@ let clear = document.querySelector("#clear");
 let container = document.querySelector(".container");
 let resize = document.querySelector("#resize");
 let colorPicker = document.querySelector("#colorpicker");
-let color = "#ffffff"
+let color = "#ffffff";
+let padColor = "#000000"
 let reset = document.querySelector("#reset");
+let eraser = document.querySelector("#eraser");
 
 //function to set a new size for the grid
 function changeSize(){
@@ -29,6 +31,11 @@ function changeColor(newColor){
     color = newColor;
 }
 
+//eraser mode
+function erase(){
+    color = padColor;
+}
+
 //change the color of the line when the color picker is used
 colorPicker.onchange = (e) => changeColor(e.target.value)
 
@@ -43,7 +50,7 @@ function createGrid(size){
     for (let i = 0; i < size*size; i++) {
         
         let square = document.createElement("div");
-        square.style.backgroundColor = "black";
+        square.style.backgroundColor = padColor;
         container.appendChild(square);
 
         //change background color of a square on hover
@@ -51,14 +58,19 @@ function createGrid(size){
             square.style.backgroundColor = color;
         })
 
+        //eraser mode after pressing eraser button
+        eraser.addEventListener('click', ()=>{
+            erase();
+        })
+
 
         //function to reset the grid
         function clearGrid(){
             clear.addEventListener('click', e=>{
-                square.style.backgroundColor = "black"
+                square.style.backgroundColor = padColor
            })
            resize.addEventListener('click', ()=>{
-                square.style.backgroundColor = "black"
+                square.style.backgroundColor = padColor
            })
         }
         
